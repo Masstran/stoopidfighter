@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://g70hi2yxkgj6"]
+
+[ext_resource type="Script" path="res://fighter.gd" id="1_okyii"]
+[ext_resource type="Texture2D" uid="uid://bbcln1oa6q5d8" path="res://fighter.png" id="2_c4x4n"]
+
+[node name="Fighter" type="Node2D"]
+script = ExtResource("1_okyii")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(580, 317)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("2_c4x4n")
