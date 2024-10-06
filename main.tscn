@@ -12,4 +12,8 @@ position = Vector2(211, 301)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Fighter2" parent="." instance=ExtResource("1_wk1j0")]
+position = Vector2(814, 300)
+scale = Vector2(-1, 1)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
