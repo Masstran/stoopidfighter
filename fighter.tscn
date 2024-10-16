@@ -12,14 +12,6 @@ script = ExtResource("1_okyii")
 scale = Vector2(0.28, 0.28)
 texture = ExtResource("2_c4x4n")
 
-[node name="GreenHealthBar" type="ColorRect" parent="."]
-offset_left = -100.0
-offset_top = -225.0
-offset_right = 100.0
-offset_bottom = -219.0
-color = Color(0, 1, 0.176471, 1)
-script = ExtResource("3_31cs6")
-
 [node name="RedHealthBar" type="ColorRect" parent="."]
 offset_left = -100.0
 offset_top = -225.0
@@ -28,3 +20,11 @@ offset_bottom = -219.0
 pivot_offset = Vector2(100, 0)
 color = Color(1, 0.0980392, 0.176471, 1)
 script = ExtResource("4_h3xxi")
+
+[node name="GreenHealthBar" type="ColorRect" parent="."]
+offset_left = -100.0
+offset_top = -225.0
+offset_right = 100.0
+offset_bottom = -219.0
+color = Color(0, 1, 0.176471, 1)
+script = ExtResource("3_31cs6")

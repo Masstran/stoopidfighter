@@ -1,7 +1,10 @@
 extends Node2D
 
-@export var health = 100
+class_name Fighter
 
+@export var health = 100
+@export var strength = 10
+var enemy : Fighter
 signal death
 
 # Called when the node enters the scene tree for the first time.
@@ -19,3 +22,7 @@ func get_hit(damage):
 	if health <= 0:
 		health = 0
 		
+func attack():
+	if enemy == null:
+		print("No enemy specified, can't hit")
+	enemy.get_hit(strength)
