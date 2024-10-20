@@ -14,7 +14,7 @@ autostart = true
 
 [node name="fighter right" parent="." instance=ExtResource("1_wk1j0")]
 position = Vector2(814, 300)
-scale = Vector2(-1, 1)
+direction = 0
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3
