@@ -1,22 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbxddo6gyyij8"]
+[gd_scene load_steps=5 format=3 uid="uid://bbxddo6gyyij8"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_uvqim"]
 [ext_resource type="PackedScene" uid="uid://g70hi2yxkgj6" path="res://fighter.tscn" id="1_wk1j0"]
+[ext_resource type="PackedScene" uid="uid://ctvpn478c1kbu" path="res://game_screen.tscn" id="2_g4eba"]
+[ext_resource type="Script" path="res://game_screen.gd" id="2_l5yln"]
+[ext_resource type="PackedScene" uid="uid://whods0yi4d1j" path="res://game_start_screen.tscn" id="3_01wtx"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_uvqim")
 
-[node name="fighter left" parent="." instance=ExtResource("1_wk1j0")]
+[node name="GameScreen" parent="." instance=ExtResource("2_g4eba")]
+script = ExtResource("2_l5yln")
+
+[node name="fighter left" parent="GameScreen" instance=ExtResource("1_wk1j0")]
 position = Vector2(211, 301)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="GameScreen"]
 autostart = true
 
-[node name="fighter right" parent="." instance=ExtResource("1_wk1j0")]
+[node name="fighter right" parent="GameScreen" instance=ExtResource("1_wk1j0")]
 position = Vector2(814, 300)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
-[node name="Buttons" type="Control" parent="."]
+[node name="Buttons" type="Control" parent="GameScreen"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Attack left" type="Button" parent="Buttons"]
+[node name="Attack left" type="Button" parent="GameScreen/Buttons"]
 layout_mode = 0
 offset_left = 142.0
 offset_top = 493.0
@@ -32,7 +37,7 @@ offset_right = 200.0
 offset_bottom = 524.0
 text = "Attack"
 
-[node name="Defend left" type="Button" parent="Buttons"]
+[node name="Defend left" type="Button" parent="GameScreen/Buttons"]
 layout_mode = 0
 offset_left = 230.0
 offset_top = 493.0
@@ -40,7 +45,7 @@ offset_right = 295.0
 offset_bottom = 524.0
 text = "Defend"
 
-[node name="Heavy Attack left" type="Button" parent="Buttons"]
+[node name="Heavy Attack left" type="Button" parent="GameScreen/Buttons"]
 layout_mode = 0
 offset_left = 126.0
 offset_top = 533.0
@@ -48,7 +53,7 @@ offset_right = 236.0
 offset_bottom = 564.0
 text = "Heavy Attack"
 
-[node name="Magic left" type="Button" parent="Buttons"]
+[node name="Magic left" type="Button" parent="GameScreen/Buttons"]
 layout_mode = 0
 offset_left = 246.0
 offset_top = 533.0
@@ -56,7 +61,7 @@ offset_right = 300.0
 offset_bottom = 564.0
 text = "Magic"
 
-[node name="Attack right" type="Button" parent="Buttons"]
+[node name="Attack right" type="Button" parent="GameScreen/Buttons"]
 layout_mode = 0
 offset_left = 737.0
 offset_top = 488.0
@@ -64,7 +69,7 @@ offset_right = 795.0
 offset_bottom = 519.0
 text = "Attack"
 
-[node name="Defend right" type="Button" parent="Buttons"]
+[node name="Defend right" type="Button" parent="GameScreen/Buttons"]
 layout_mode = 0
 offset_left = 825.0
 offset_top = 488.0
@@ -72,7 +77,7 @@ offset_right = 890.0
 offset_bottom = 519.0
 text = "Defend"
 
-[node name="Heavy Attack right" type="Button" parent="Buttons"]
+[node name="Heavy Attack right" type="Button" parent="GameScreen/Buttons"]
 layout_mode = 0
 offset_left = 721.0
 offset_top = 528.0
@@ -80,7 +85,7 @@ offset_right = 831.0
 offset_bottom = 559.0
 text = "Heavy Attack"
 
-[node name="Magic right" type="Button" parent="Buttons"]
+[node name="Magic right" type="Button" parent="GameScreen/Buttons"]
 layout_mode = 0
 offset_left = 841.0
 offset_top = 528.0
@@ -88,7 +93,10 @@ offset_right = 895.0
 offset_bottom = 559.0
 text = "Magic"
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Buttons/Attack left" to="." method="_on_attack_left_pressed"]
-[connection signal="pressed" from="Buttons/Defend left" to="." method="_on_defend_left_pressed"]
-[connection signal="pressed" from="Buttons/Attack right" to="." method="_on_attack_right_pressed"]
+[node name="GameStartScreen" parent="." instance=ExtResource("3_01wtx")]
+
+[connection signal="timeout" from="GameScreen/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameScreen/Buttons/Attack left" to="GameScreen" method="_on_attack_left_pressed"]
+[connection signal="pressed" from="GameScreen/Buttons/Defend left" to="GameScreen" method="_on_defend_left_pressed"]
+[connection signal="pressed" from="GameScreen/Buttons/Attack right" to="GameScreen" method="_on_attack_right_pressed"]
+[connection signal="start_game" from="GameStartScreen" to="GameScreen" method="new_game"]
