@@ -22,7 +22,7 @@ func get_hit(damage):
 	health -= damage
 	if health <= 0:
 		health = 0
-		
+
 func attack():
 	if enemy == null:
 		print("No enemy specified, can't hit")
