@@ -1,28 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://g70hi2yxkgj6"]
+[gd_scene load_steps=6 format=3 uid="uid://g70hi2yxkgj6"]
 
 [ext_resource type="Script" path="res://fighter.gd" id="1_okyii"]
 [ext_resource type="Texture2D" uid="uid://bbcln1oa6q5d8" path="res://fighter.png" id="2_c4x4n"]
+[ext_resource type="Script" path="res://fighter_image.gd" id="3_4x3jp"]
 [ext_resource type="Script" path="res://color_rect.gd" id="3_31cs6"]
+[ext_resource type="Script" path="res://health_text.gd" id="4_kn2we"]
 
 [node name="Fighter" type="Node2D"]
 script = ExtResource("1_okyii")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Fighter_image" type="Sprite2D" parent="."]
+position = Vector2(13, -1)
 scale = Vector2(0.28, 0.28)
 texture = ExtResource("2_c4x4n")
+offset = Vector2(-46.4286, 3.57143)
+script = ExtResource("3_4x3jp")
 
-[node name="RedHealthBar" type="ColorRect" parent="."]
+[node name="Health" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -116.0
+offset_top = -277.0
+offset_right = 152.0
+offset_bottom = -184.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RedHealthBar" type="ColorRect" parent="Health"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -225.0
+offset_top = -6.0
 offset_right = 100.0
-offset_bottom = -219.0
+grow_horizontal = 2
+grow_vertical = 0
 pivot_offset = Vector2(100, 0)
 color = Color(1, 0.0980392, 0.176471, 1)
 
-[node name="GreenHealthBar" type="ColorRect" parent="."]
+[node name="GreenHealthBar" type="ColorRect" parent="Health"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -225.0
+offset_top = -6.0
 offset_right = 100.0
-offset_bottom = -219.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(100, 3)
 color = Color(0, 1, 0.176471, 1)
 script = ExtResource("3_31cs6")
+
+[node name="HealthText" type="RichTextLabel" parent="Health"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -40.0
+offset_right = 31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "100/100"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("4_kn2we")

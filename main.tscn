@@ -20,6 +20,7 @@ autostart = true
 position = Vector2(814, 300)
 rotation = 3.14159
 scale = Vector2(1, -1)
+direction = 0
 
 [node name="Buttons" type="Control" parent="GameScreen"]
 layout_mode = 3
